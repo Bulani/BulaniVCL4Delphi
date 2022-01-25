@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9B62C812-2CAB-4543-AA9E-94C6224EDEA3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Bulani.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Bulani">
+        <MSBuild Projects="Bulani.dproj"/>
+    </Target>
+    <Target Name="Bulani:Clean">
+        <MSBuild Projects="Bulani.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Bulani:Make">
+        <MSBuild Projects="Bulani.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Bulani"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Bulani:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Bulani:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
