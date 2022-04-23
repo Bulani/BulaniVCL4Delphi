@@ -45,7 +45,8 @@ requires
   adortl,
   JvControls,
   JvDlgs,
-  JvCustom;
+  JvCustom,
+  JvGlobus;
 
 contains
   BulaniDBEdit in 'Source\BulaniDBEdit.pas',
@@ -55,6 +56,7 @@ contains
   BulaniEdit in 'Source\BulaniEdit.pas',
   BulaniDBLookupComboBox in 'Source\BulaniDBLookupComboBox.pas',
   BulaniDBDateEdit in 'Source\BulaniDBDateEdit.pas',
-  BulaniDateEdit in 'Source\BulaniDateEdit.pas';
+  BulaniDateEdit in 'Source\BulaniDateEdit.pas',
+  BulaniButton in 'Source\BulaniButton.pas';
 
 end.

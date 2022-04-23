@@ -59,7 +59,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UsePackage>vclimg;vcl;rtl;vclwinx;bindengine;dbrtl;vcldb;vclx;adortl;Jcl;JclVcl;JvCore;JvSystem;JvStdCtrls;JvControls;JvCustom;JvDB;JvDlgs;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>vclimg;vcl;rtl;vclwinx;bindengine;dbrtl;vcldb;vclx;adortl;Jcl;JclVcl;JvCore;JvSystem;JvStdCtrls;JvControls;JvCustom;JvDB;JvDlgs;JvGlobus;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>vclimg;vcl;rtl;vclwinx;bindengine;dbrtl;vcldb;vclx;adortl;$(DCC_UsePackage)</DCC_UsePackage>
@@ -105,6 +105,7 @@
         <DCCReference Include="JvControls.dcp"/>
         <DCCReference Include="JvDlgs.dcp"/>
         <DCCReference Include="JvCustom.dcp"/>
+        <DCCReference Include="JvGlobus.dcp"/>
         <DCCReference Include="Source\BulaniDBEdit.pas"/>
         <DCCReference Include="Source\BulaniMaskEdit.pas"/>
         <DCCReference Include="Source\BulaniComboBox.pas"/>
@@ -113,6 +114,7 @@
         <DCCReference Include="Source\BulaniDBLookupComboBox.pas"/>
         <DCCReference Include="Source\BulaniDBDateEdit.pas"/>
         <DCCReference Include="Source\BulaniDateEdit.pas"/>
+        <DCCReference Include="Source\BulaniButton.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -868,8 +870,8 @@
                 </DeployClass>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
