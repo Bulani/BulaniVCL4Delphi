@@ -40,7 +40,7 @@ uses
   JvgTypes, JvgCommClasses, JvgUtils;
 
 type
-  TTipoButton = (tbRed, tbGreen, tbBlue, tbYellow, tbNone);
+  TTipoButton = (tbRed, tbGreen, tbBlue, tbYellow, tbGray, tbNone);
   TBulaniButton = class(TSpeedButton)
   private
     FAboutJVCL: TJVCLAboutInfo;
@@ -385,6 +385,19 @@ begin
     begin
       FColor       := $0033BBFF;
       FActiveColor := $00129CF3;
+      Cursor       := crHandPoint;
+      Flat         := True;
+      Frame        := False;
+      Height       := 40;
+      ParentFont   := False;
+      Width        := 120;
+      Invalidate;
+    end;
+
+    tbGray:
+    begin
+      FColor       := $00C7C3BD;
+      FActiveColor := $00A6A595;
       Cursor       := crHandPoint;
       Flat         := True;
       Frame        := False;

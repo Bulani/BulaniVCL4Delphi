@@ -2,35 +2,35 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2021/09/30 13:47:46.000.015,=rtl.dcp</Transaction>
-    <Transaction>2021/09/30 13:48:01.000.089,C:\DProjetos\Bulani\Bulani.dproj=D:\Documentos\Embarcadero\Studio\Projects\Package1.dproj</Transaction>
+    <Transaction>2021/09/30 13:48:01.000.089,D:\Documentos\Embarcadero\Studio\Projects\Package1.dproj=C:\DProjetos\Bulani\Bulani.dproj</Transaction>
     <Transaction>2021/09/30 13:50:35.000.979,=C:\DProjetos\Bulani\Source\BulaniDBEdit.pas</Transaction>
-    <Transaction>2021/09/30 13:50:36.000.110,=vclimg.dcp</Transaction>
-    <Transaction>2021/09/30 13:50:36.000.076,=dbrtl.dcp</Transaction>
-    <Transaction>2021/09/30 13:50:36.000.134,=bindengine.dcp</Transaction>
-    <Transaction>2021/09/30 13:50:36.000.093,=vclwinx.dcp</Transaction>
     <Transaction>2021/09/30 13:50:36.000.042,=vcldb.dcp</Transaction>
+    <Transaction>2021/09/30 13:50:36.000.134,=bindengine.dcp</Transaction>
+    <Transaction>2021/09/30 13:50:36.000.076,=dbrtl.dcp</Transaction>
     <Transaction>2021/09/30 13:50:36.000.026,=vcl.dcp</Transaction>
+    <Transaction>2021/09/30 13:50:36.000.093,=vclwinx.dcp</Transaction>
+    <Transaction>2021/09/30 13:50:36.000.110,=vclimg.dcp</Transaction>
     <Transaction>2021/09/30 14:02:21.000.176,=C:\DProjetos\Bulani\Source\BulaniMaskEdit.pas</Transaction>
     <Transaction>2021/09/30 14:27:29.000.405,=C:\DProjetos\Bulani\Source\BulaniComboBox.pas</Transaction>
     <Transaction>2021/09/30 14:32:19.000.605,=C:\DProjetos\Bulani\Source\BulaniDBComboBox.pas</Transaction>
     <Transaction>2021/09/30 14:34:36.000.819,=C:\DProjetos\Bulani\Source\BulaniEdit.pas</Transaction>
     <Transaction>2021/09/30 14:37:02.000.835,=C:\DProjetos\Bulani\Source\BulaniDBLookupComboBox.pas</Transaction>
-    <Transaction>2021/10/07 16:18:35.000.932,=JvControls.dcp</Transaction>
-    <Transaction>2021/10/07 16:18:35.000.784,=Jcl.dcp</Transaction>
-    <Transaction>2021/10/07 16:18:35.000.913,=adortl.dcp</Transaction>
     <Transaction>2021/10/07 16:18:35.000.962,=JvDlgs.dcp</Transaction>
     <Transaction>2021/10/07 16:18:35.000.686,=JvCore.dcp</Transaction>
-    <Transaction>2021/10/07 16:18:35.000.658,=C:\DProjetos\Bulani\Source\BulaniDBDatePicker.pas</Transaction>
     <Transaction>2021/10/07 16:18:35.000.738,=JclVcl.dcp</Transaction>
     <Transaction>2021/10/07 16:18:35.000.871,=JvDB.dcp</Transaction>
-    <Transaction>2021/10/07 16:18:35.000.720,=vclx.dcp</Transaction>
-    <Transaction>2021/10/07 16:18:35.000.804,=JvStdCtrls.dcp</Transaction>
+    <Transaction>2021/10/07 16:18:35.000.913,=adortl.dcp</Transaction>
+    <Transaction>2021/10/07 16:18:35.000.784,=Jcl.dcp</Transaction>
+    <Transaction>2021/10/07 16:18:35.000.932,=JvControls.dcp</Transaction>
     <Transaction>2021/10/07 16:18:35.000.851,=JvSystem.dcp</Transaction>
+    <Transaction>2021/10/07 16:18:35.000.720,=vclx.dcp</Transaction>
+    <Transaction>2021/10/07 16:18:35.000.658,=C:\DProjetos\Bulani\Source\BulaniDBDatePicker.pas</Transaction>
+    <Transaction>2021/10/07 16:18:35.000.804,=JvStdCtrls.dcp</Transaction>
     <Transaction>2021/10/07 16:18:36.000.002,=JvCustom.dcp</Transaction>
     <Transaction>2021/10/07 16:35:57.000.569,=C:\DProjetos\Bulani\Source\BulaniDBDateEdit.pas</Transaction>
     <Transaction>2021/10/07 17:11:17.000.362,C:\DProjetos\Bulani\Source\BulaniDBDatePicker.pas=</Transaction>
     <Transaction>2022/01/18 22:13:36.000.945,=C:\DProjetos\Bulani\Source\BulaniDateEdit.pas</Transaction>
-    <Transaction>2022/02/23 18:43:34.000.480,=JvGlobus.dcp</Transaction>
     <Transaction>2022/02/23 18:43:34.000.464,=C:\DProjetos\Bulani\Source\BulaniButton.pas</Transaction>
+    <Transaction>2022/02/23 18:43:34.000.480,=JvGlobus.dcp</Transaction>
   </Transactions>
 </BorlandProject>
