@@ -37,7 +37,8 @@ uses
   Windows, Messages, Classes, Controls, Graphics,
   ExtCtrls, Buttons, StdCtrls, Forms,
   JVCLVer,
-  JvgTypes, JvgCommClasses, JvgUtils;
+  JvgTypes, JvgCommClasses, JvgUtils,
+  Colors;
 
 type
   TTipoButton = (tbRed, tbGreen, tbBlue, tbYellow, tbGray, tbNone);
@@ -170,19 +171,14 @@ begin
 
   R := ClientRect;
 
-  if Down or (FIsDown and FMouseEnter) then
-    BevelOuter := bvLowered
-  else
-    BevelOuter := bvRaised;
-  if Flat and not FIsDown then
-    BevelOuter := bvNone;
+  BevelOuter := bvNone; // Sempre sem afundamento
 
   if FFrame then
     InflateRect(R, -1, -1);
   Dec(R.Right);
   Dec(R.Bottom);
-  DrawBoxEx(Canvas.Handle, R, ALLGLSIDES, bvNone, BevelOuter, False,
-    IIF(FMouseEnter, ActiveColor, Color), False);
+  DrawBoxEx(Canvas.Handle, R, ALLGLSIDES, bvNone, bvNone, False,
+  IIF(FMouseEnter, ActiveColor, Color), False);
 
   if Transparent then
     SetBkMode(Canvas.Handle, Windows.TRANSPARENT)
@@ -195,8 +191,6 @@ begin
   if Assigned(Glyph) then
     Inc(R.Left, Glyph.Width);
 
-  if FIsDown then
-    OffsetRect(R, 1, 1);
   Windows.DrawText(Canvas.Handle, PChar(Caption), Length(Caption), R,
     DT_SINGLELINE or DT_CENTER or DT_VCENTER);
 
@@ -209,11 +203,11 @@ begin
   end;
 
   if Assigned(Glyph) then
-    CreateBitmapExt(Canvas.Handle, Glyph, ClientRect, (Width - Glyph.Width -
-      Canvas.TextWidth(Caption)) div 2 + Integer(FIsDown) - 1 - Spacing, 1 +
-      (Height - Glyph.Height) div 2 + Integer(FIsDown),
-      fwoNone, fdsDefault,
-      True, GetTransparentColor(Glyph, ftcLeftBottomPixel), 0);
+    CreateBitmapExt(Canvas.Handle, Glyph, ClientRect,
+      (Width - Glyph.Width - Canvas.TextWidth(Caption)) div 2 - Spacing,
+      1 + (Height - Glyph.Height) div 2,
+      fwoNone, fdsDefault, True,
+      GetTransparentColor(Glyph, ftcLeftBottomPixel), 0);
 end;
 
 procedure TBulaniButton.CMMouseEnter(var Msg: TMessage);
@@ -344,8 +338,8 @@ begin
 
     tbGreen:
     begin
-      FColor       := $0051C800;
-      FActiveColor := $0060AE27;
+      FColor       := Colors.TThemeColors.Green500;
+      FActiveColor := Colors.TThemeColors.Green600;
       Cursor       := crHandPoint;
       Flat         := True;
       Frame        := False;
@@ -357,8 +351,8 @@ begin
 
     tbRed:
     begin
-      FColor       := $004444FF;
-      FActiveColor := $002B39C0;
+      FColor       := Colors.TThemeColors.Rose500;
+      FActiveColor := Colors.TThemeColors.Rose600;
       Cursor       := crHandPoint;
       Flat         := True;
       Frame        := False;
@@ -370,8 +364,8 @@ begin
 
     tbBlue:
     begin
-      FColor       := $00E5B533;
-      FActiveColor := $00B98029;
+      FColor       := Colors.TThemeColors.Sky500;
+      FActiveColor := Colors.TThemeColors.Sky600;
       Cursor       := crHandPoint;
       Flat         := True;
       Frame        := False;
@@ -383,8 +377,8 @@ begin
 
     tbYellow:
     begin
-      FColor       := $0033BBFF;
-      FActiveColor := $00129CF3;
+      FColor       := Colors.TThemeColors.Amber400;
+      FActiveColor := Colors.TThemeColors.Amber500;
       Cursor       := crHandPoint;
       Flat         := True;
       Frame        := False;
@@ -396,8 +390,8 @@ begin
 
     tbGray:
     begin
-      FColor       := $00C7C3BD;
-      FActiveColor := $00A6A595;
+      FColor       := Colors.TThemeColors.Slate400;
+      FActiveColor := Colors.TThemeColors.Slate500;
       Cursor       := crHandPoint;
       Flat         := True;
       Frame        := False;
@@ -517,11 +511,12 @@ begin
   end;
 
   if Assigned(Glyph) then
-    CreateBitmapExt(Canvas.Handle, Glyph, ClientRect, (Width - Glyph.Width - Canvas.TextWidth(Caption)) div 2 +
-      Integer(FIsDown) - 1 - Spacing, 1 + (Height - Glyph.Height) div 2 + Integer(FIsDown),
-      fwoNone, fdsDefault,
-      True, GetTransparentColor(Glyph, ftcLeftBottomPixel), 0);
-end;
+    CreateBitmapExt(Canvas.Handle, Glyph, ClientRect,
+      (Width - Glyph.Width - Canvas.TextWidth(Caption)) div 2 - Spacing,
+      1 + (Height - Glyph.Height) div 2,
+      fwoNone, fdsDefault, True,
+      GetTransparentColor(Glyph, ftcLeftBottomPixel), 0);
+  end;
 
 procedure TBulaniExtButton.MouseEnter(Control: TControl);
 begin

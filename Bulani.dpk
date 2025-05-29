@@ -57,6 +57,7 @@ contains
   BulaniDBLookupComboBox in 'Source\BulaniDBLookupComboBox.pas',
   BulaniDBDateEdit in 'Source\BulaniDBDateEdit.pas',
   BulaniDateEdit in 'Source\BulaniDateEdit.pas',
-  BulaniButton in 'Source\BulaniButton.pas';
+  BulaniButton in 'Source\BulaniButton.pas',
+  Colors in 'Source\Colors.pas';
 
 end.
