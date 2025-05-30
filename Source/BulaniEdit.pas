@@ -3,30 +3,26 @@ unit BulaniEdit;
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Graphics;
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Graphics,
+  Vcl.Forms, Colors, Windows, Messages;
 
 type
-  TBulaniEdit = class(TEdit)
+  TBulaniEdit = class(TCustomPanel)
   private
-    FMudarCor : TColor;
-    FCampoObrigatorio: Boolean;
-    FMensagem: String;
-    procedure SetMudarCor(const Value: TColor);
-    procedure SetCampoObrigatorio(const Value: Boolean);
-    procedure SetMensagem(const Value: String);
-    { Private declarations }
+    FEdit: TEdit;
+    FFocused: Boolean;
+    procedure EditEnter(Sender: TObject);
+    procedure EditExit(Sender: TObject);
+    procedure SetText(const Value: string);
+    function GetText: string;
+    procedure UpdateStyles;
   protected
-    procedure DoEnter; override;
-    procedure DoExit; override;
-    { Protected declarations }
+    procedure Resize; override;
+    procedure Paint; override;
   public
     constructor Create(AOwner: TComponent); override;
-    { Public declarations }
-  published
-    property MudarCor : TColor read FMudarCor write SetMudarCor;
-    property Mensagem : String read FMensagem write SetMensagem;
-    property CampoObrigatorio : Boolean read FCampoObrigatorio write SetCampoObrigatorio;
-   {{ Published declarations }
+    property EditControl: TEdit read FEdit;
+    property Text: string read GetText write SetText;
   end;
 
 procedure Register;
@@ -40,38 +36,106 @@ end;
 
 { TBulaniEdit }
 
-constructor TBulaniEdit.Create(AOwner : TComponent);
+constructor TBulaniEdit.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FMudarCor := $00D6F4FE;
+
+  BevelOuter := bvNone;
+  Height := 30;
+  Width := 200;
+  Color := TThemeColors.Slate100;
+  ParentBackground := False;
+
+  FEdit := TEdit.Create(Self);
+  FEdit.Parent := Self;
+  FEdit.BorderStyle := bsNone;
+  FEdit.Align := alNone;
+  FEdit.Top := (Height - FEdit.Height) div 2;
+  FEdit.Left := 8;
+  FEdit.Width := Width - 16;
+  FEdit.Color := Color;
+  FEdit.Font.Name := 'Inter';
+  FEdit.Font.Size := 10;
+  FEdit.OnEnter := EditEnter;
+  FEdit.OnExit := EditExit;
+
+  UpdateStyles;
 end;
 
-procedure TBulaniEdit.DoEnter;
+procedure TBulaniEdit.EditEnter(Sender: TObject);
+begin
+  FFocused := True;
+  UpdateStyles;
+end;
+
+procedure TBulaniEdit.EditExit(Sender: TObject);
+begin
+  FFocused := False;
+  UpdateStyles;
+end;
+
+function TBulaniEdit.GetText: string;
+begin
+  Result := FEdit.Text;
+end;
+
+procedure TBulaniEdit.SetText(const Value: string);
+begin
+  FEdit.Text := Value;
+end;
+
+procedure TBulaniEdit.UpdateStyles;
+begin
+  if not Enabled then
+  begin
+    Color := TThemeColors.Slate100;
+    FEdit.Color := TThemeColors.Slate100;
+    Font.Color := TThemeColors.Gray400;
+  end
+  else if FFocused then
+  begin
+    Color := TThemeColors.Slate100;
+    FEdit.Color := TThemeColors.Slate100;
+    Font.Color := TThemeColors.Gray900;
+  end
+  else
+  begin
+    Color := TThemeColors.Slate100;
+    FEdit.Color := TThemeColors.Slate100;
+    Font.Color := TThemeColors.Gray700;
+  end;
+  Invalidate;
+end;
+
+procedure TBulaniEdit.Resize;
 begin
   inherited;
-  Color := FMudarCor;
+  if Assigned(FEdit) then
+  begin
+    FEdit.Top := (Height - FEdit.Height) div 2;
+    FEdit.Width := Width - 16;
+  end;
 end;
 
-procedure TBulaniEdit.DoExit;
+procedure TBulaniEdit.Paint;
+var
+  R: TRect;
 begin
   inherited;
-  Color := clWindow;
-end;
+  R := ClientRect;
+  InflateRect(R, -1, -1);
 
-procedure TBulaniEdit.SetCampoObrigatorio(const Value: Boolean);
-begin
-  FCampoObrigatorio := Value;
-end;
+  Canvas.Brush.Style := bsClear;
+  Canvas.Pen.Width := 1;
 
-procedure TBulaniEdit.SetMensagem(const Value: String);
-begin
-  FMensagem := Value;
-end;
+  if not Enabled then
+    Canvas.Pen.Color := TThemeColors.Slate300
+  else if FFocused then
+    Canvas.Pen.Color := TThemeColors.Sky500
+  else
+    Canvas.Pen.Color := TThemeColors.Slate400;
 
-procedure TBulaniEdit.SetMudarCor(const Value: TColor);
-begin
-  FMudarCor := Value;
+  Canvas.Rectangle(R.Left, R.Top, R.Right, R.Bottom);
 end;
 
 end.
-

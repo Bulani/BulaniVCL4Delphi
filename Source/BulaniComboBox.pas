@@ -3,7 +3,8 @@ unit BulaniComboBox;
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Graphics;
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Graphics,
+  Colors;
 
 type
   TBulaniComboBox = class(TComboBox)
@@ -37,7 +38,7 @@ end;
 constructor TBulaniComboBox.Create(AOwner : TComponent);
 begin
   inherited Create(AOwner);
-  FMudarCor := $00D6F4FE;
+  FMudarCor := Colors.TThemeColors.Sky500;
 end;
 
 procedure TBulaniComboBox.DoEnter;

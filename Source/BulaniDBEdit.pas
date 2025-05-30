@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Graphics;
+  Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Graphics, Colors;
 
 type
   TBulaniDBEdit = class(TDBEdit)
@@ -38,7 +38,7 @@ end;
 constructor TBulaniDBEdit.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FMudarCor := $00D6F4FE;
+  FMudarCor := Colors.TThemeColors.Sky500;
 end;
 
 procedure TBulaniDBEdit.DoEnter;

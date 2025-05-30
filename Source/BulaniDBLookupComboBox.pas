@@ -3,7 +3,8 @@ unit BulaniDBLookupComboBox;
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Controls, Vcl.DBCtrls, Vcl.Graphics;
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.DBCtrls, Vcl.Graphics,
+  Colors;
 
 type
   TBulaniDBLookupComboBox = class(TDBLookupComboBox)
@@ -38,7 +39,7 @@ constructor TBulaniDBLookupComboBox.Create(AOwner : TComponent);
 begin
   inherited;
   inherited Create(AOwner);
-  FMudarCor := $00D6F4FE;
+  FMudarCor := Colors.TThemeColors.Sky500;
 end;
 
 procedure TBulaniDBLookupComboBox.DoEnter;

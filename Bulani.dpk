@@ -53,11 +53,11 @@ contains
   BulaniMaskEdit in 'Source\BulaniMaskEdit.pas',
   BulaniComboBox in 'Source\BulaniComboBox.pas',
   BulaniDBComboBox in 'Source\BulaniDBComboBox.pas',
-  BulaniEdit in 'Source\BulaniEdit.pas',
   BulaniDBLookupComboBox in 'Source\BulaniDBLookupComboBox.pas',
   BulaniDBDateEdit in 'Source\BulaniDBDateEdit.pas',
   BulaniDateEdit in 'Source\BulaniDateEdit.pas',
   BulaniButton in 'Source\BulaniButton.pas',
-  Colors in 'Source\Colors.pas';
+  Colors in 'Source\Colors.pas',
+  BulaniEdit in 'Source\BulaniEdit.pas';
 
 end.
