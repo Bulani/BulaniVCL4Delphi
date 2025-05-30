@@ -1,4 +1,4 @@
-unit BulaniEdit;
+﻿unit BulaniEdit;
 
 interface
 
@@ -16,6 +16,7 @@ type
     procedure SetText(const Value: string);
     function GetText: string;
     procedure UpdateStyles;
+    procedure AdjustEditPosition;
   protected
     procedure Resize; override;
     procedure Paint; override;
@@ -43,23 +44,38 @@ begin
   BevelOuter := bvNone;
   Height := 30;
   Width := 200;
-  Color := TThemeColors.Slate100;
+  Color := TThemeColors.Slate200;
   ParentBackground := False;
 
   FEdit := TEdit.Create(Self);
   FEdit.Parent := Self;
   FEdit.BorderStyle := bsNone;
   FEdit.Align := alNone;
-  FEdit.Top := (Height - FEdit.Height) div 2;
-  FEdit.Left := 8;
-  FEdit.Width := Width - 16;
   FEdit.Color := Color;
   FEdit.Font.Name := 'Inter';
   FEdit.Font.Size := 10;
   FEdit.OnEnter := EditEnter;
   FEdit.OnExit := EditExit;
 
+  AdjustEditPosition;
   UpdateStyles;
+end;
+
+procedure TBulaniEdit.AdjustEditPosition;
+var
+  EditHeight: Integer;
+begin
+  if not Assigned(FEdit) then Exit;
+
+  EditHeight := FEdit.Font.Size + 8;
+
+  if EditHeight > Height - 4 then
+    EditHeight := Height - 4;
+
+  FEdit.Height := EditHeight;
+  FEdit.Top := (Height - FEdit.Height) div 2;
+  FEdit.Left := 8;
+  FEdit.Width := Width - 16;
 end;
 
 procedure TBulaniEdit.EditEnter(Sender: TObject);
@@ -88,20 +104,20 @@ procedure TBulaniEdit.UpdateStyles;
 begin
   if not Enabled then
   begin
-    Color := TThemeColors.Slate100;
-    FEdit.Color := TThemeColors.Slate100;
+    Color := TThemeColors.Slate200;
+    FEdit.Color := TThemeColors.Slate200;
     Font.Color := TThemeColors.Gray400;
   end
   else if FFocused then
   begin
-    Color := TThemeColors.Slate100;
-    FEdit.Color := TThemeColors.Slate100;
+    Color := TThemeColors.Slate200;
+    FEdit.Color := TThemeColors.Slate200;
     Font.Color := TThemeColors.Gray900;
   end
   else
   begin
-    Color := TThemeColors.Slate100;
-    FEdit.Color := TThemeColors.Slate100;
+    Color := TThemeColors.Slate200;
+    FEdit.Color := TThemeColors.Slate200;
     Font.Color := TThemeColors.Gray700;
   end;
   Invalidate;
@@ -110,11 +126,7 @@ end;
 procedure TBulaniEdit.Resize;
 begin
   inherited;
-  if Assigned(FEdit) then
-  begin
-    FEdit.Top := (Height - FEdit.Height) div 2;
-    FEdit.Width := Width - 16;
-  end;
+  AdjustEditPosition;
 end;
 
 procedure TBulaniEdit.Paint;

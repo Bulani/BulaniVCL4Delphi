@@ -28,7 +28,7 @@ type
     FDefaultStyle: Boolean;
     FModalResult: TModalResult;
     FFrameColor: TColor;
-    FActiveColor: TColor;
+    FColorHover: TColor;
     FTipoButton: TTipoButton;
     procedure CMMouseEnter(var Msg: TMessage); message CM_MOUSEENTER;
     procedure CMMouseLeave(var Msg: TMessage); message CM_MOUSELEAVE;
@@ -55,7 +55,7 @@ type
   published
     property AboutJVCL: TJVCLAboutInfo read FAboutJVCL write FAboutJVCL stored False;
     property Color: TColor read FColor write SetColor;
-    property ActiveColor: TColor read FActiveColor write FActiveColor;
+    property ColorHover: TColor read FColorHover write FColorHover;
     property Control: TControl read FControl write SetControl;
     property CaptionLabel: TLabel read FCaptionLabel write SetCaptionLabel;
     property Frame: Boolean read FFrame write SetFrame default True;
@@ -72,10 +72,10 @@ type
     FStyleActive: TJvgSpeedButtonStyle;
     FStylePushed: TJvgSpeedButtonStyle;
     procedure SetColor(const Value: TColor);
-    procedure SetActiveColor(const Value: TColor);
+    procedure SetColorHover(const Value: TColor);
     function GetFont: TFont;
     procedure SetFont(const Value: TFont);
-    function GetActiveColor: TColor;
+    function GetColorHover: TColor;
     function GetColor: TColor;
     procedure SetStyle(Value: TJvgSpeedButtonStyle);
     procedure SetStyleActive(Value: TJvgSpeedButtonStyle);
@@ -89,7 +89,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   published
-    property ActiveColor: TColor read GetActiveColor write SetActiveColor stored False;
+    property ColorHover: TColor read GetColorHover write SetColorHover stored False;
     property Color: TColor read GetColor write SetColor stored False;
     property Style: TJvgSpeedButtonStyle read FStyle write SetStyle;
     property StyleActive: TJvgSpeedButtonStyle read FStyleActive write SetStyleActive;
@@ -123,7 +123,7 @@ begin
   inherited Create(AOwner);
   //..defaults
   FColor := IncColor(GetSysColor(COLOR_BTNFACE), 30);
-  FActiveColor := IncColor(FColor, 10);
+  FColorHover := IncColor(FColor, 10);
   FFrame := True;
   FTipoButton := tbNone;
 end;
@@ -152,7 +152,7 @@ begin
   Dec(R.Right);
   Dec(R.Bottom);
   DrawBoxEx(Canvas.Handle, R, ALLGLSIDES, bvNone, bvNone, False,
-  IIF(FMouseEnter, ActiveColor, Color), False);
+  IIF(FMouseEnter, ColorHover, Color), False);
 
   if Transparent then
     SetBkMode(Canvas.Handle, Windows.TRANSPARENT)
@@ -201,7 +201,7 @@ begin
   if csDesigning in ComponentState then
     Exit;
   FMouseEnter := True;
-  if FIsDown or (Color <> ActiveColor) then
+  if FIsDown or (Color <> ColorHover) then
     Invalidate;
 end;
 
@@ -210,7 +210,7 @@ begin
   if csDesigning in ComponentState then
     Exit;
   FMouseEnter := False;
-  if FIsDown or (Color <> ActiveColor) then
+  if FIsDown or (Color <> ColorHover) then
     Invalidate;
 end;
 
@@ -313,7 +313,7 @@ begin
     tbGreen:
     begin
       FColor        := Colors.TThemeColors.Green500;
-      FActiveColor  := Colors.TThemeColors.Green600;
+      FColorHover   := Colors.TThemeColors.Green600;
       Cursor        := crHandPoint;
       Flat          := True;
       Frame         := False;
@@ -328,65 +328,65 @@ begin
 
     tbRed:
     begin
-      FColor       := Colors.TThemeColors.Rose500;
-      FActiveColor := Colors.TThemeColors.Rose600;
-      Cursor       := crHandPoint;
-      Flat         := True;
-      Frame        := False;
-      Height       := 40;
-      ParentFont   := False;
-      Width        := 120;
-      Font.Color   := clWhite;
-      Font.Name    := 'Inter';
-      Font.Size    := 12;
+      FColor        := Colors.TThemeColors.Rose500;
+      FColorHover   := Colors.TThemeColors.Rose600;
+      Cursor        := crHandPoint;
+      Flat          := True;
+      Frame         := False;
+      Height        := 40;
+      ParentFont    := False;
+      Width         := 120;
+      Font.Color    := clWhite;
+      Font.Name     := 'Inter';
+      Font.Size     := 12;
       Invalidate;
     end;
 
     tbBlue:
     begin
-      FColor       := Colors.TThemeColors.Sky500;
-      FActiveColor := Colors.TThemeColors.Sky600;
-      Cursor       := crHandPoint;
-      Flat         := True;
-      Frame        := False;
-      Height       := 40;
-      ParentFont   := False;
-      Width        := 120;
-      Font.Color   := clWhite;
-      Font.Name    := 'Inter';
-      Font.Size    := 12;
+      FColor        := Colors.TThemeColors.Sky500;
+      FColorHover   := Colors.TThemeColors.Sky600;
+      Cursor        := crHandPoint;
+      Flat          := True;
+      Frame         := False;
+      Height        := 40;
+      ParentFont    := False;
+      Width         := 120;
+      Font.Color    := clWhite;
+      Font.Name     := 'Inter';
+      Font.Size     := 12;
       Invalidate;
     end;
 
     tbYellow:
     begin
-      FColor       := Colors.TThemeColors.Amber400;
-      FActiveColor := Colors.TThemeColors.Amber500;
-      Cursor       := crHandPoint;
-      Flat         := True;
-      Frame        := False;
-      Height       := 40;
-      ParentFont   := False;
-      Width        := 120;
-      Font.Color   := clWhite;
-      Font.Name    := 'Inter';
-      Font.Size    := 12;
+      FColor        := Colors.TThemeColors.Amber400;
+      FColorHover   := Colors.TThemeColors.Amber500;
+      Cursor        := crHandPoint;
+      Flat          := True;
+      Frame         := False;
+      Height        := 40;
+      ParentFont    := False;
+      Width         := 120;
+      Font.Color    := clWhite;
+      Font.Name     := 'Inter';
+      Font.Size     := 12;
       Invalidate;
     end;
 
     tbGray:
     begin
-      FColor       := Colors.TThemeColors.Slate400;
-      FActiveColor := Colors.TThemeColors.Slate500;
-      Cursor       := crHandPoint;
-      Flat         := True;
-      Frame        := False;
-      Height       := 40;
-      ParentFont   := False;
-      Width        := 120;
-      Font.Color   := clWhite;
-      Font.Name    := 'Inter';
-      Font.Size    := 12;
+      FColor        := Colors.TThemeColors.Slate400;
+      FColorHover   := Colors.TThemeColors.Slate500;
+      Cursor        := crHandPoint;
+      Flat          := True;
+      Frame         := False;
+      Height        := 40;
+      ParentFont    := False;
+      Width         := 120;
+      Font.Color    := clWhite;
+      Font.Name     := 'Inter';
+      Font.Size     := 12;
       Invalidate;
     end;
 
@@ -546,7 +546,7 @@ begin
   end;
 end;
 
-procedure TBulaniExtButton.SetActiveColor(const Value: TColor);
+procedure TBulaniExtButton.SetColorHover(const Value: TColor);
 begin
   if StyleActive.Color <> Value then
   begin
@@ -555,7 +555,7 @@ begin
   end;
 end;
 
-function TBulaniExtButton.GetActiveColor: TColor;
+function TBulaniExtButton.GetColorHover: TColor;
 begin
   Result := StyleActive.Color;
 end;
