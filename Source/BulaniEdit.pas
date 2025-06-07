@@ -3,42 +3,30 @@
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Graphics, Vcl.Forms, Vcl.Buttons, TailwindCSS, Windows, Messages;
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Graphics,
+  Vcl.Forms, TailwindCSS, Windows, Messages;
 
 type
   TBulaniEdit = class(TCustomPanel)
   private
     FEdit: TEdit;
-    FButton: TSpeedButton;
     FFocused: Boolean;
-    FOnButtonClick: TNotifyEvent;
     procedure EditEnter(Sender: TObject);
     procedure EditExit(Sender: TObject);
     procedure SetText(const Value: string);
     function GetText: string;
     procedure UpdateStyles;
     procedure AdjustEditPosition;
-    procedure ButtonClick(Sender: TObject);
-    procedure SetButtonGlyph(const Value: TBitmap);
-    function GetButtonGlyph: TBitmap;
-    procedure SetButtonVisible(const Value: Boolean);
-    function GetButtonVisible: Boolean;
-  protected
     procedure SetEnabled(Value: Boolean); override;
+  protected
     procedure Resize; override;
     procedure Paint; override;
   public
     constructor Create(AOwner: TComponent); override;
-    destructor Destroy; override;
     property EditControl: TEdit read FEdit;
-    property Button: TSpeedButton read FButton;
   published
     property Text: string read GetText write SetText;
-    property Enabled;
-    property ButtonGlyph: TBitmap read GetButtonGlyph write SetButtonGlyph;
-    property ButtonVisible: Boolean read GetButtonVisible write SetButtonVisible default True;
-    property OnButtonClick: TNotifyEvent read FOnButtonClick write FOnButtonClick;
+    property Enabled write SetEnabled default True;
     property Align;
     property Anchors;
     property BevelOuter;
@@ -103,21 +91,8 @@ begin
   FEdit.OnExit := EditExit;
   FEdit.Enabled := Enabled;
 
-  FButton := TSpeedButton.Create(Self);
-  FButton.Parent := Self;
-  FButton.Align := alRight;
-  FButton.Width := Height - 4;
-  FButton.Flat := True;
-  FButton.OnClick := ButtonClick;
-  FButton.Visible := True;
-
   AdjustEditPosition;
   UpdateStyles;
-end;
-
-destructor TBulaniEdit.Destroy;
-begin
-  inherited Destroy;
 end;
 
 procedure TBulaniEdit.AdjustEditPosition;
@@ -134,17 +109,7 @@ begin
   FEdit.Height := EditHeight;
   FEdit.Top := (Height - FEdit.Height) div 2;
   FEdit.Left := 8;
-
-  if FButton.Visible then
-    FEdit.Width := Width - FButton.Width - 16
-  else
-    FEdit.Width := Width - 16;
-end;
-
-procedure TBulaniEdit.ButtonClick(Sender: TObject);
-begin
-  if Assigned(FOnButtonClick) then
-    FOnButtonClick(Self);
+  FEdit.Width := Width - 16;
 end;
 
 procedure TBulaniEdit.EditEnter(Sender: TObject);
@@ -164,36 +129,9 @@ begin
   Result := FEdit.Text;
 end;
 
-function TBulaniEdit.GetButtonGlyph: TBitmap;
-begin
-  Result := FButton.Glyph;
-end;
-
-function TBulaniEdit.GetButtonVisible: Boolean;
-begin
-  Result := FButton.Visible;
-end;
-
 procedure TBulaniEdit.SetText(const Value: string);
 begin
   FEdit.Text := Value;
-end;
-
-procedure TBulaniEdit.SetButtonGlyph(const Value: TBitmap);
-begin
-  if Assigned(Value) then
-    FButton.Glyph.Assign(Value)
-  else
-    FButton.Glyph := nil;
-end;
-
-procedure TBulaniEdit.SetButtonVisible(const Value: Boolean);
-begin
-  if FButton.Visible <> Value then
-  begin
-    FButton.Visible := Value;
-    AdjustEditPosition;
-  end;
 end;
 
 procedure TBulaniEdit.SetEnabled(Value: Boolean);
@@ -202,7 +140,6 @@ begin
   begin
     inherited SetEnabled(Value);
     FEdit.Enabled := Value;
-    FButton.Enabled := Value;
     UpdateStyles;
   end;
 end;
