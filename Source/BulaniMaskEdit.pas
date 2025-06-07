@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.Graphics, Colors;
+  Vcl.Graphics, TailwindCSS;
 
 type
   TTipoMascara = (tmData, tmCPF, tmCNPJ, tmCEP, tmTelefone, tmCelular, tmHora, tmValor, tmNone);
@@ -70,7 +70,7 @@ end;
 constructor TBulaniMaskEdit.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FMudarCor    := Colors.TThemeColors.Sky500;
+  FMudarCor    := TTailwind.Sky500;
   FTipoMascara := tmNone;
 end;
 

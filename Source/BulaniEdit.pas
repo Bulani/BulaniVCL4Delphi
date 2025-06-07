@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Graphics,
-  Vcl.Forms, Colors, Windows, Messages;
+  Vcl.Forms, TailwindCSS, Windows, Messages;
 
 type
   TBulaniEdit = class(TCustomPanel)
@@ -17,13 +17,45 @@ type
     function GetText: string;
     procedure UpdateStyles;
     procedure AdjustEditPosition;
+    procedure SetEnabled(Value: Boolean); override;
   protected
     procedure Resize; override;
     procedure Paint; override;
   public
     constructor Create(AOwner: TComponent); override;
     property EditControl: TEdit read FEdit;
+  published
     property Text: string read GetText write SetText;
+    property Enabled write SetEnabled default True;
+    property Align;
+    property Anchors;
+    property BevelOuter;
+    property BevelInner;
+    property BevelKind;
+    property BevelWidth;
+    property BorderWidth;
+    property BorderStyle;
+    property Color;
+    property Ctl3D;
+    property Font;
+    property ParentBackground;
+    property ParentColor;
+    property ParentCtl3D;
+    property ParentFont;
+    property ParentShowHint;
+    property PopupMenu;
+    property ShowHint;
+    property TabOrder;
+    property TabStop;
+    property Visible;
+    property OnClick;
+    property OnDblClick;
+    property OnEnter;
+    property OnExit;
+    property OnMouseDown;
+    property OnMouseMove;
+    property OnMouseUp;
+    property OnResize;
   end;
 
 procedure Register;
@@ -44,8 +76,9 @@ begin
   BevelOuter := bvNone;
   Height := 30;
   Width := 200;
-  Color := TThemeColors.Slate200;
+  Color := TTailwind.Slate200;
   ParentBackground := False;
+  inherited Enabled := True;
 
   FEdit := TEdit.Create(Self);
   FEdit.Parent := Self;
@@ -56,6 +89,7 @@ begin
   FEdit.Font.Size := 10;
   FEdit.OnEnter := EditEnter;
   FEdit.OnExit := EditExit;
+  FEdit.Enabled := Enabled;
 
   AdjustEditPosition;
   UpdateStyles;
@@ -100,25 +134,38 @@ begin
   FEdit.Text := Value;
 end;
 
+procedure TBulaniEdit.SetEnabled(Value: Boolean);
+begin
+  if Enabled <> Value then
+  begin
+    inherited SetEnabled(Value);
+    FEdit.Enabled := Value;
+    UpdateStyles;
+  end;
+end;
+
 procedure TBulaniEdit.UpdateStyles;
 begin
   if not Enabled then
   begin
-    Color := TThemeColors.Slate200;
-    FEdit.Color := TThemeColors.Slate200;
-    Font.Color := TThemeColors.Gray400;
+    Color := TTailwind.Slate200;
+    FEdit.Color := TTailwind.Slate200;
+    FEdit.Font.Color := TTailwind.Gray500;
+    FEdit.ParentFont := False;
   end
   else if FFocused then
   begin
-    Color := TThemeColors.Slate200;
-    FEdit.Color := TThemeColors.Slate200;
-    Font.Color := TThemeColors.Gray900;
+    Color := TTailwind.Slate200;
+    FEdit.Color := TTailwind.Slate200;
+    FEdit.Font.Color := TTailwind.Gray900;
+    FEdit.ParentFont := False;
   end
   else
   begin
-    Color := TThemeColors.Slate200;
-    FEdit.Color := TThemeColors.Slate200;
-    Font.Color := TThemeColors.Gray700;
+    Color := TTailwind.Slate200;
+    FEdit.Color := TTailwind.Slate200;
+    FEdit.Font.Color := TTailwind.Gray700;
+    FEdit.ParentFont := False;
   end;
   Invalidate;
 end;
@@ -141,11 +188,11 @@ begin
   Canvas.Pen.Width := 1;
 
   if not Enabled then
-    Canvas.Pen.Color := TThemeColors.Slate300
+    Canvas.Pen.Color := TTailwind.Slate300
   else if FFocused then
-    Canvas.Pen.Color := TThemeColors.Sky500
+    Canvas.Pen.Color := TTailwind.Sky500
   else
-    Canvas.Pen.Color := TThemeColors.Slate400;
+    Canvas.Pen.Color := TTailwind.Slate400;
 
   Canvas.Rectangle(R.Left, R.Top, R.Right, R.Bottom);
 end;

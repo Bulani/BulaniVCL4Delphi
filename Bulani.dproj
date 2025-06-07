@@ -128,8 +128,8 @@
         <DCCReference Include="Source\BulaniDBDateEdit.pas"/>
         <DCCReference Include="Source\BulaniDateEdit.pas"/>
         <DCCReference Include="Source\BulaniButton.pas"/>
-        <DCCReference Include="Source\Colors.pas"/>
         <DCCReference Include="Source\BulaniEdit.pas"/>
+        <DCCReference Include="Source\TailwindCSS.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

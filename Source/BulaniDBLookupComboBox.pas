@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.DBCtrls, Vcl.Graphics,
-  Colors;
+  TailwindCSS;
 
 type
   TBulaniDBLookupComboBox = class(TDBLookupComboBox)
@@ -39,7 +39,7 @@ constructor TBulaniDBLookupComboBox.Create(AOwner : TComponent);
 begin
   inherited;
   inherited Create(AOwner);
-  FMudarCor := Colors.TThemeColors.Sky500;
+  FMudarCor := TTailwind.Sky500;
 end;
 
 procedure TBulaniDBLookupComboBox.DoEnter;

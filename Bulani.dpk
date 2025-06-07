@@ -57,7 +57,7 @@ contains
   BulaniDBDateEdit in 'Source\BulaniDBDateEdit.pas',
   BulaniDateEdit in 'Source\BulaniDateEdit.pas',
   BulaniButton in 'Source\BulaniButton.pas',
-  Colors in 'Source\Colors.pas',
-  BulaniEdit in 'Source\BulaniEdit.pas';
+  BulaniEdit in 'Source\BulaniEdit.pas',
+  TailwindCSS in 'Source\TailwindCSS.pas';
 
 end.

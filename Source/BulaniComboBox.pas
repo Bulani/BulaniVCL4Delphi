@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Graphics,
-  Colors;
+  TailwindCSS;
 
 type
   TBulaniComboBox = class(TComboBox)
@@ -38,7 +38,7 @@ end;
 constructor TBulaniComboBox.Create(AOwner : TComponent);
 begin
   inherited Create(AOwner);
-  FMudarCor := Colors.TThemeColors.Sky500;
+  FMudarCor := TTailwind.Sky500;
 end;
 
 procedure TBulaniComboBox.DoEnter;

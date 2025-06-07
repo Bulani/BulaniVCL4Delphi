@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.DBCtrls,
-  Vcl.Graphics, Colors;
+  Vcl.Graphics, TailwindCSS;
 
 type
   TBulaniDBComboBox = class(TDBComboBox)
@@ -38,7 +38,7 @@ end;
 constructor TBulaniDBComboBox.Create(AOwner : TComponent);
 begin
   inherited Create(AOwner);
-  FMudarCor := Colors.TThemeColors.Sky500;
+  FMudarCor := TTailwind.Sky500;
 end;
 
 procedure TBulaniDBComboBox.DoEnter;

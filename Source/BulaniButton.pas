@@ -12,7 +12,7 @@ uses
   ExtCtrls, Buttons, StdCtrls, Forms,
   JVCLVer,
   JvgTypes, JvgCommClasses, JvgUtils,
-  Colors;
+  TailwindCSS;
 
 type
   TTipoButton = (tbRed, tbGreen, tbBlue, tbYellow, tbGray, tbNone);
@@ -312,8 +312,8 @@ begin
 
     tbGreen:
     begin
-      FColor        := Colors.TThemeColors.Green500;
-      FColorHover   := Colors.TThemeColors.Green600;
+      FColor        := TTailwind.Green500;
+      FColorHover   := TTailwind.Green600;
       Cursor        := crHandPoint;
       Flat          := True;
       Frame         := False;
@@ -328,8 +328,8 @@ begin
 
     tbRed:
     begin
-      FColor        := Colors.TThemeColors.Rose500;
-      FColorHover   := Colors.TThemeColors.Rose600;
+      FColor        := TTailwind.Rose500;
+      FColorHover   := TTailwind.Rose600;
       Cursor        := crHandPoint;
       Flat          := True;
       Frame         := False;
@@ -344,8 +344,8 @@ begin
 
     tbBlue:
     begin
-      FColor        := Colors.TThemeColors.Sky500;
-      FColorHover   := Colors.TThemeColors.Sky600;
+      FColor        := TTailwind.Sky500;
+      FColorHover   := TTailwind.Sky600;
       Cursor        := crHandPoint;
       Flat          := True;
       Frame         := False;
@@ -360,8 +360,8 @@ begin
 
     tbYellow:
     begin
-      FColor        := Colors.TThemeColors.Amber400;
-      FColorHover   := Colors.TThemeColors.Amber500;
+      FColor        := TTailwind.Amber400;
+      FColorHover   := TTailwind.Amber500;
       Cursor        := crHandPoint;
       Flat          := True;
       Frame         := False;
@@ -376,8 +376,8 @@ begin
 
     tbGray:
     begin
-      FColor        := Colors.TThemeColors.Slate400;
-      FColorHover   := Colors.TThemeColors.Slate500;
+      FColor        := TTailwind.Slate400;
+      FColorHover   := TTailwind.Slate500;
       Cursor        := crHandPoint;
       Flat          := True;
       Frame         := False;

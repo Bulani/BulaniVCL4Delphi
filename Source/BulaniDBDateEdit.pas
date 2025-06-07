@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Mask,
   JvExMask, JvToolEdit, JvDBControls, Vcl.Graphics,
-  Colors;
+  TailwindCSS;
 
 type
   TBulaniDBDateEdit = class(TJvDBDateEdit)
@@ -39,7 +39,7 @@ end;
 constructor TBulaniDBDateEdit.Create(AOwner : TComponent);
 begin
   inherited Create(AOwner);
-  FMudarCor := Colors.TThemeColors.Sky500;
+  FMudarCor := TTailwind.Sky500;
 end;
 
 procedure TBulaniDBDateEdit.DoEnter;
